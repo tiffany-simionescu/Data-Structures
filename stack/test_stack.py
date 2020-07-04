@@ -6,14 +6,9 @@ from stack import Node
 class QueueTests(unittest.TestCase):
     def setUp(self):
         self.stack = Stack()
-        # self.linked_list = LinkedList()
-        # self.node = Node()
 
     def test_len_returns_0_for_empty_stack(self):
         self.assertEqual(len(self.stack), 0)
-
-    # def test_len_returns_0_for_empty_linked_list(self):
-    #     self.assertEqual(self.linked_list.get_list_size(), 0)
 
     def test_len_returns_correct_length_after_push(self):
         self.assertEqual(len(self.stack), 0)
@@ -30,28 +25,9 @@ class QueueTests(unittest.TestCase):
         self.stack.push(18)
         self.assertEqual(len(self.stack), 9)
 
-    # def test_linked_list_tests_length_after_add_to_tail(self):
-    #     self.assertEqual(self.linked_list.get_list_size(), 0)
-    #     self.linked_list.add_to_tail(2)
-    #     self.assertEqual(self.linked_list.get_list_size(), 1)
-    #     self.linked_list.add_to_tail(4)
-    #     self.assertEqual(self.linked_list.get_list_size(), 2)
-    #     self.linked_list.add_to_tail(6)
-    #     self.linked_list.add_to_tail(8)
-    #     self.linked_list.add_to_tail(10)
-    #     self.linked_list.add_to_tail(12)
-    #     self.linked_list.add_to_tail(14)
-    #     self.linked_list.add_to_tail(16)
-    #     self.linked_list.add_to_tail(18)
-    #     self.assertEqual(self.linked_list.get_list_size(), 9)
-
     def test_empty_pop(self):
         self.assertIsNone(self.stack.pop())
         self.assertEqual(len(self.stack), 0)
-
-    # def test_linked_list_remove_head(self):
-    #     self.assertIsNone(self.linked_list.remove_head())
-    #     self.assertEqual(self.linked_list.get_list_size(), 0)
 
     def test_pop_respects_order(self):
         self.stack.push(100)
@@ -65,19 +41,6 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(len(self.stack), 0)
         self.assertIsNone(self.stack.pop())
         self.assertEqual(len(self.stack), 0)
-
-    # def test_linked_list_remove_new_items_from_head(self):
-    #     self.linked_list.add_to_head(100)
-    #     self.linked_list.add_to_head(101)
-    #     self.linked_list.add_to_head(105)
-    #     self.assertEqual(self.linked_list.remove_head(), 105)
-    #     self.assertEqual(self.linked_list.get_list_size(), 2)
-    #     self.assertEqual(self.linked_list.remove_head(), 101)
-    #     self.assertEqual(self.linked_list.get_list_size(), 1)
-    #     self.assertEqual(self.linked_list.remove_head(), 100)
-    #     self.assertEqual(self.linked_list.get_list_size(), 0)
-    #     self.assertIsNone(self.linked_list.remove_head())
-    #     self.assertEqual(self.linked_list.get_list_size(), 0)
 
 
 if __name__ == '__main__':
