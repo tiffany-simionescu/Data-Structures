@@ -107,3 +107,20 @@ class LinkedList:
             cur_node.set_next(None)
             self.tail == cur_node
             return value
+
+    # Lecture Method for finding the middle of Singly Linked List
+#     def find_middle(self):
+#         mid_point = self.head
+#         end_point = self.head
+#         while end_point is not None and end_point.get_next() is not None:
+#             print("test")
+#             mid_point = mid_point.get_next()
+#             end_point = end_point.get_next().get_next()
+#         return mid_point.value
+
+# ll = LinkedList()
+# ll.add_to_tail(1)
+# ll.add_to_tail(2)
+# ll.add_to_tail(3)
+# ll.add_to_tail(4)
+# print(ll.find_middle())
