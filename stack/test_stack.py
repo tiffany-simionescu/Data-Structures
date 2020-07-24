@@ -1,5 +1,7 @@
 import unittest
 from stack import Stack
+from stack import LinkedList
+from stack import Node
 
 class QueueTests(unittest.TestCase):
     def setUp(self):
