@@ -66,6 +66,35 @@ class BSTNode:
         if self.right:
             self.right.for_each(fn)
 
+    # STRETCH
+    def delete(self, value):
+        if self is None:
+            return None
+
+        # Search for node in left or right subtree
+        if value < self.value:
+            self.left = self.left.delete(value)
+        elif value > self.value:
+            self.right = self.right.delete(value)
+        else:
+            # removing node with one child
+            if self.left is None:
+                temp = self.right
+                self = None
+                return temp
+            elif self.right is None:
+                temp = self.left
+                self = None
+                return temp
+
+            # removing node with two children
+            temp = min(self.right)
+            self.value = temp.value
+            self.right = self.right.delete(temp.value)
+
+        return self
+            
+
     # Part 2 -----------------------
 
     # Print all the values in order from low to high

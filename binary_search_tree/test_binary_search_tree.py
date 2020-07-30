@@ -107,5 +107,13 @@ class BinarySearchTreeTests(unittest.TestCase):
 
         sys.stdout = stdout_  # Restore stdout
 
+    # STRETCH - DELETE
+    def test_delete(self):
+        self.bst.insert(25)
+        self.bst.insert(7)
+        self.bst.delete(25)
+        self.assertFalse(self.bst.contains(25))
+        self.assertTrue(self.bst.contains(7))
+
 if __name__ == '__main__':
     unittest.main()
