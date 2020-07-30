@@ -13,16 +13,112 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+class Node:
+    def __init__(self, value=None, next_node=None):
+        self.value = value
+        self.next_node = next_node
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None 
+
+    def __str__(self):
+        output = ""
+        current_node = self.head
+        while current_node is not None:
+            output += f"{current_node.value}"
+            # Update the tracker node to the next node
+            current_node = current_node.next_node
+        return output
+
+    def add_to_head(self, value):
+        new_node = Node(value)
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+          new_node.next_node = self.head 
+          self.head = new_node
+
+    def add_to_tail(self, value):
+        new_node = Node(value)
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next_node = new_node
+            self.tail = new_node
+
+    def remove_head(self):
+        if not self.head:
+            return None
+        if self.head.next_node is None:
+            head_value = self.head.value
+            self.head = None
+            self.tail = None
+            return head_value
+        head_value = self.head.value
+        self.head = self.head.next_node
+        return head_value
+
+    def contains(self, value):
+        if self.head is None:
+            return False
+        current_node = self.head
+        while current_node is not None:
+            if current_node.value == value:
+                return True
+            current_node = current_node.next_node
+        return False
+
+    def get_list_size(self):
+        i = 0
+        current_item = self.head
+        if not current_item:
+            return i
+        while current_item is not None:
+            i += 1
+            current_count = i
+            current_item = current_item.next_node
+        return current_count
+
+### Original Class Queue - using an Array ###
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         queue_length = len(self.storage)
+#         self.size = queue_length
+#         return queue_length
+
+#     def enqueue(self, value):
+#         return self.storage.append(value)
+
+#     def dequeue(self):
+#         if len(self.storage) > 0:
+#             return self.storage.pop(0)
+
+
+### Class Queue - Linked List ###
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = LinkedList()
     
     def __len__(self):
-        pass
+        return self.size
 
     def enqueue(self, value):
-        pass
+        self.size += 1
+        return self.storage.add_to_tail(value)
 
     def dequeue(self):
-        pass
+        if self.size > 0:
+            self.size -= 1
+            node = self.storage.remove_head()
+            return node
+        return None
